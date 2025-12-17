@@ -1,20 +1,37 @@
-# FOCS Assignment: List Operations Web App
+# ⚡ FOCS Assignment: List Operations Web App
 
-This project contains a set of web pages demonstrating various list operations using JavaScript. Each operation is implemented on a separate page with a user-friendly interface.
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-## Project Structure
+A premium, interactive web application demonstrating essential list operations algorithms. Designed with a modern "Glassmorphism" aesthetic and smooth animations.
 
-- **index.html**: Landing page with navigation to all functions.
-- **even_odd.html**: Count even and odd numbers in a list.
-- **remove_duplicates.html**: Remove duplicates from a list.
-- **sort_list.html**: Sort a list in ascending or descending order.
-- **second_largest.html**: Find the second largest element in a list.
-- **merge_lists.html**: Merge two lists.
-- **search_element.html**: Search for a specific element in a list.
-- **style.css**: Shared styles for a consistent, premium look.
+---
 
-## How to Run
+## 🚀 Features
 
-1. Open `index.html` in any modern web browser.
-2. Navigate to the desired function using the menu.
-3. Input your list (comma-separated) and view the results.
+- **Count Even & Odd**: Rapidly tally even and odd integers.
+- **Remove Duplicates**: Cleanse lists of redundant data.
+- **Sort List**: Visualize sorting in ASC or DESC order.
+- **Second Largest**: Identify the runner-up value instantly.
+- **Merge Lists**: Combine dataset seamlessely.
+- **Search Element**: locate items with precision.
+
+## 📂 Project Structure
+
+| File | Description |
+|------|-------------|
+| `index.html` | 🏠 **Dashboard**: The main hub navigation. |
+| `style.css` | 🎨 **Core Styles**: Premium Dark/Glass theme. |
+| `even_odd.html` | 🔢 **Analysis**: Parity counting logic. |
+| `remove_duplicates.html` | 🧹 **Cleaning**: Unique filter implementation. |
+| `sort_list.html` | 📶 **Ordering**: Sorting implementation. |
+| `second_largest.html` | 🥈 **Ranking**: 2nd max finder. |
+| `merge_lists.html` | 🔗 **Fusion**: Array concatenation. |
+| `search_element.html` | 🔍 **Discovery**: Linear search utility. |
+
+## 🛠️ How to Run
+
+1. **Clone/Download** the repository.
+2. **Open** `index.html` in any modern browser (Chrome, Edge, Firefox).
+3. **Interact** with the beautiful UI!
+
+> *Note: This project is part of a college assignment demonstrating proficiency in Web Development and Algorithms.*
