@@ -34,4 +34,4 @@ A premium, interactive web application demonstrating essential list operations a
 2. **Open** `index.html` in any modern browser (Chrome, Edge, Firefox).
 3. **Interact** with the beautiful UI!
 
-> *Note: This project is part of a college assignment demonstrating proficiency in Web Development and Algorithms.*
+> *Note: This project is part of a college assignment demonstrating proficiency in FOCS*ō
