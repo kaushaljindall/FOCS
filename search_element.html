@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Element - FOCS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Menu</a>
+
+        <h2>Search Element in List</h2>
+
+        <div class="card" style="display: block; text-align: left;">
+            <div class="input-group">
+                <label for="inputList">List (comma separated):</label>
+                <input type="text" id="inputList" placeholder="e.g. apple, orange, banana, kiwi">
+            </div>
+
+            <div class="input-group">
+                <label for="searchKey">Element to Search:</label>
+                <input type="text" id="searchKey" placeholder="e.g. banana">
+            </div>
+
+            <button onclick="searchElement()">Search</button>
+
+            <div id="result" class="result-box empty"></div>
+        </div>
+    </div>
+
+    <script>
+        function searchElement() {
+            const listStr = document.getElementById('inputList').value;
+            const searchKey = document.getElementById('searchKey').value.trim();
+            const resultBox = document.getElementById('result');
+
+            if (!listStr.trim()) {
+                resultBox.textContent = "Please enter a list to search in.";
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+                return;
+            }
+
+            if (!searchKey) {
+                resultBox.textContent = "Please enter an element to search for.";
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+                return;
+            }
+
+            // Case sensitive or insensitive? "Search an element" usually implies strict or loose. 
+            // Let's do distinct matches but allow trimming.
+            const list = listStr.split(',').map(item => item.trim());
+
+            // Find all indices
+            const indices = [];
+            list.forEach((item, index) => {
+                if (item === searchKey) {
+                    indices.push(index); // 0-based
+                }
+            });
+
+            if (indices.length > 0) {
+                resultBox.innerHTML = `<strong>Found!</strong><br>Element '${searchKey}' found at position(s): ${indices.map(i => i + 1).join(', ')} (1-based index).`;
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--success)';
+            } else {
+                resultBox.textContent = `Element '${searchKey}' not found in the list.`;
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+            }
+        }
+    </script>
+</body>
+
+</html>

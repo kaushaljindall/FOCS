@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Lists - FOCS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Menu</a>
+
+        <h2>Merge Two Lists</h2>
+
+        <div class="card" style="display: block; text-align: left;">
+            <div class="input-group">
+                <label for="list1">List 1 (comma separated):</label>
+                <input type="text" id="list1" placeholder="e.g. 1, 2, 3">
+            </div>
+
+            <div class="input-group">
+                <label for="list2">List 2 (comma separated):</label>
+                <input type="text" id="list2" placeholder="e.g. 4, 5, 6">
+            </div>
+
+            <button onclick="mergeLists()">Merge</button>
+
+            <div id="result" class="result-box empty"></div>
+        </div>
+    </div>
+
+    <script>
+        function mergeLists() {
+            const list1 = document.getElementById('list1').value;
+            const list2 = document.getElementById('list2').value;
+            const resultBox = document.getElementById('result');
+
+            // Allow empty lists, but check if both are empty
+            if (!list1.trim() && !list2.trim()) {
+                resultBox.textContent = "Please enter at least one list.";
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+                return;
+            }
+
+            const arr1 = list1 ? list1.split(',').map(item => item.trim()).filter(i => i) : [];
+            const arr2 = list2 ? list2.split(',').map(item => item.trim()).filter(i => i) : [];
+
+            const merged = [...arr1, ...arr2];
+
+            resultBox.innerHTML = `<strong>Merged List (${merged.length} items):</strong><br>${merged.join(', ')}`;
+            resultBox.classList.remove('empty');
+            resultBox.style.borderLeftColor = 'var(--success)';
+        }
+    </script>
+</body>
+
+</html>

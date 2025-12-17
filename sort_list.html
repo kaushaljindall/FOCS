@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort List - FOCS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Menu</a>
+
+        <h2>Sort List</h2>
+
+        <div class="card" style="display: block; text-align: left;">
+            <div class="input-group">
+                <label for="inputList">Enter Numbers (comma separated):</label>
+                <input type="text" id="inputList" placeholder="e.g. 5, 2, 9, 1, 5, 6">
+            </div>
+
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="sortOrder" value="asc" checked> Ascending
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="sortOrder" value="desc"> Descending
+                </label>
+            </div>
+
+            <button onclick="sortList()">Sort</button>
+
+            <div id="result" class="result-box empty"></div>
+        </div>
+    </div>
+
+    <script>
+        function sortList() {
+            const input = document.getElementById('inputList').value;
+            const resultBox = document.getElementById('result');
+            const sortOrder = document.querySelector('input[name="sortOrder"]:checked').value;
+
+            if (!input.trim()) {
+                resultBox.textContent = "Please enter some numbers.";
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+                return;
+            }
+
+            let numbers = input.split(',').map(num => Number(num.trim()));
+            // Filter out NaNs to be safe
+            if (numbers.some(isNaN)) {
+                resultBox.textContent = "Please enter valid numbers only.";
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+                return;
+            }
+
+            if (sortOrder === 'asc') {
+                numbers.sort((a, b) => a - b);
+            } else {
+                numbers.sort((a, b) => b - a);
+            }
+
+            resultBox.innerHTML = `<strong>Sorted List (${sortOrder === 'asc' ? 'Ascending' : 'Descending'}):</strong><br>${numbers.join(', ')}`;
+            resultBox.classList.remove('empty');
+            resultBox.style.borderLeftColor = 'var(--success)';
+        }
+    </script>
+</body>
+
+</html>

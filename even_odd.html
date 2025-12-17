@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Even & Odd - FOCS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Menu</a>
+
+        <h2>Count Even & Odd Numbers</h2>
+
+        <div class="card" style="display: block; text-align: left;">
+            <div class="input-group">
+                <label for="inputList">Enter Numbers (comma separated):</label>
+                <input type="text" id="inputList" placeholder="e.g. 12, 45, 2, 8, 13">
+            </div>
+
+            <button onclick="countEvenOdd()">Calculate</button>
+
+            <div id="result" class="result-box empty"></div>
+        </div>
+    </div>
+
+    <script>
+        function countEvenOdd() {
+            const input = document.getElementById('inputList').value;
+            const resultBox = document.getElementById('result');
+
+            if (!input.trim()) {
+                resultBox.textContent = "Please enter some numbers.";
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+                return;
+            }
+
+            const numbers = input.split(',').map(num => Number(num.trim())).filter(n => !isNaN(n));
+
+            if (numbers.length === 0) {
+                resultBox.textContent = "Invalid input. Please enter valid numbers.";
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+                return;
+            }
+
+            let even = 0;
+            let odd = 0;
+
+            numbers.forEach(num => {
+                if (num % 2 === 0) even++;
+                else odd++;
+            });
+
+            resultBox.innerHTML = `<strong>Results:</strong><br>Even Numbers: ${even}<br>Odd Numbers: ${odd}`;
+            resultBox.classList.remove('empty');
+            resultBox.style.borderLeftColor = 'var(--success)';
+        }
+    </script>
+</body>
+
+</html>

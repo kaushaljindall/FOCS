@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Largest - FOCS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Menu</a>
+
+        <h2>Find Second Largest Element</h2>
+
+        <div class="card" style="display: block; text-align: left;">
+            <div class="input-group">
+                <label for="inputList">Enter Numbers (comma separated):</label>
+                <input type="text" id="inputList" placeholder="e.g. 10, 5, 20, 8, 12">
+            </div>
+
+            <button onclick="findSecondLargest()">Find</button>
+
+            <div id="result" class="result-box empty"></div>
+        </div>
+    </div>
+
+    <script>
+        function findSecondLargest() {
+            const input = document.getElementById('inputList').value;
+            const resultBox = document.getElementById('result');
+
+            if (!input.trim()) {
+                resultBox.textContent = "Please enter some numbers.";
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+                return;
+            }
+
+            const numbers = input.split(',').map(num => Number(num.trim())).filter(n => !isNaN(n));
+
+            if (numbers.length < 2) {
+                resultBox.textContent = "Need at least two numbers to find the second largest.";
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+                return;
+            }
+
+            // Remove duplicates to ensure distinct second largest logic holds (e.g. 10, 10, 9 -> 2nd is 9)
+            // If strictly index-based, 10 would be 2nd, but usually value-based is implied.
+            // Let's stick to distinct values for "second largest".
+            const uniqueNumbers = [...new Set(numbers)];
+
+            if (uniqueNumbers.length < 2) {
+                resultBox.textContent = "All numbers are the same. No distinct second largest exists.";
+                resultBox.classList.remove('empty');
+                resultBox.style.borderLeftColor = 'var(--error)';
+                return;
+            }
+
+            uniqueNumbers.sort((a, b) => b - a);
+            const secondLargest = uniqueNumbers[1];
+
+            resultBox.innerHTML = `<strong>Top values:</strong> ${uniqueNumbers.slice(0, 5).join(', ')}...<br><br><strong>Second Largest:</strong> ${secondLargest}`;
+            resultBox.classList.remove('empty');
+            resultBox.style.borderLeftColor = 'var(--success)';
+        }
+    </script>
+</body>
+
+</html>
